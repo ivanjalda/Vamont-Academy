@@ -1,0 +1,28 @@
+:root{--bg:#0b1220;--card:#111a2e;--line:#1f2b45;--gold:#c9a45c;--gold2:#e6c98a;--txt:#e9edf5;--mut:#93a0b8;--serif:Georgia,"Times New Roman",serif;--sans:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.55 var(--sans)}
+a{color:var(--gold2);text-decoration:none}img{max-width:100%;display:block}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;padding:12px 20px;background:rgba(11,18,32,.94);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;color:var(--txt);font:600 20px var(--serif);letter-spacing:.5px}.brand em{color:var(--gold);font-style:normal}
+.mark{width:34px;height:34px;border:1.5px solid var(--gold);display:grid;place-items:center;color:var(--gold);font:700 18px var(--serif)}
+#nav{display:flex;gap:16px;flex-wrap:wrap;flex:1}#nav a{color:var(--mut);font-size:14px;text-transform:uppercase;letter-spacing:1px}#nav a:hover{color:var(--gold2)}
+.lang button{background:none;border:1px solid var(--line);color:var(--mut);padding:4px 9px;cursor:pointer}.lang button.on{border-color:var(--gold);color:var(--gold)}
+main{max-width:1180px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:60px 10px 40px}.hero h1{font:600 clamp(30px,5vw,50px)/1.15 var(--serif);margin:0 0 14px}.hero p{color:var(--mut);max-width:640px;margin:0 auto 26px}
+.btn{display:inline-block;background:var(--gold);color:#111;padding:12px 24px;font-weight:600;letter-spacing:.5px;border:1px solid var(--gold);margin:4px 0}.btn:hover{background:var(--gold2)}
+.btn.ghost{background:none;color:var(--gold2)}.btn.off{background:#26324d;border-color:#26324d;color:var(--mut)}
+.edbar{display:flex;gap:8px;align-items:center;justify-content:center;color:var(--mut);font-size:14px;margin:10px 0 0}
+.edbar button{background:none;border:1px solid var(--line);color:var(--mut);padding:4px 12px;cursor:pointer}.edbar button.on{border-color:var(--gold);color:var(--gold)}
+.sec{margin:46px 0}.sec-h h2{font:600 28px var(--serif);margin:0}.sec-h p{color:var(--mut);margin:4px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);color:var(--txt);padding:12px;transition:.2s}.card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.card img,.ph{aspect-ratio:3/4;object-fit:cover;width:100%;background:#0e1628}.ph{display:grid;place-items:center;color:var(--gold);font:700 60px var(--serif)}
+.card h3{font:600 15px/1.35 var(--sans);margin:10px 0 6px}.price{color:var(--gold2);font-weight:600}.price s{color:var(--mut);font-weight:400}
+.flag{position:absolute;top:18px;left:18px;background:#0b1220cc;border:1px solid var(--gold);color:var(--gold);font-size:11px;padding:1px 6px;letter-spacing:1px}
+.subs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.sub{background:var(--card);border:1px solid var(--line);padding:24px;color:var(--txt)}.sub:hover{border-color:var(--gold)}.sub h3{font:600 22px var(--serif);margin:0 0 8px;color:var(--gold2)}.sub p{color:var(--mut)}
+.back{display:inline-block;margin:6px 0 16px;color:var(--mut)}
+.prod{display:grid;grid-template-columns:1fr 1.1fr;gap:34px}.prod .gal{display:grid;gap:10px}.prod .info{position:relative}.prod .flag{position:static;display:inline-block;margin-bottom:8px}
+.prod h1{font:600 30px/1.2 var(--serif);margin:0 0 10px}.price.big{font-size:26px;margin:0 0 14px}.body{margin-top:24px;color:#cfd6e4}.body h2,.body h3{font-family:var(--serif);color:var(--gold2)}
+.ph.big{font-size:120px}.muted{color:var(--mut)}.small{font-size:13px}.legal{max-width:760px}.legal h1{font-family:var(--serif)}
+footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:28px 20px;font-size:13px;margin-top:60px}footer a{color:var(--mut)}
+.loading{text-align:center;color:var(--mut);padding:80px}
+@media(max-width:760px){.prod{grid-template-columns:1fr}#nav{order:3;width:100%;gap:12px}}
