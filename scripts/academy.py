@@ -45,6 +45,10 @@ def detect_lang(title, handle, body):
         return "en"
     if any(m in t for m in es_marks):
         return "es"
+    if re.search(r"\b(spanish|español|espanol)\b", t):
+        return "es"
+    if re.search(r"\b(english|inglés|ingles)\b", t):
+        return "en"
     text = re.sub(r"<[^>]+>", " ", body or "").lower()
     es = len(re.findall(r"\b(el|la|los|las|de|que|para|con|una|inversión|mercado)\b", text))
     en = len(re.findall(r"\b(the|and|of|to|for|with|your|investment|market)\b", text))
