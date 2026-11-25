@@ -1,0 +1,46 @@
+name: Academia (copia de Shopify, cobros, ventas y web)
+
+on:
+  schedule:
+    - cron: "23 */3 * * *"   # cada 3 horas
+  workflow_dispatch:
+  push:
+    paths:
+      - "data/config.json"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: academia
+  cancel-in-progress: false
+
+jobs:
+  academia:
+    runs-on: ubuntu-latest
+    env:
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      VALMONT_DOWNLOADS: ${{ secrets.VALMONT_DOWNLOADS }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Motor de la academia
+        run: python scripts/academy.py
+      - name: Guardar cambios
+        run: |
+          git config user.name "valmont-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Academia: actualización automática"
+          git pull --rebase -X ours || true
+          git push
+
+  publicar:
+    needs: academia
+    uses: ./.github/workflows/publicar-web.yml
