@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ivanjalda.github.io/Vamont-Academy/sitemap.xml
