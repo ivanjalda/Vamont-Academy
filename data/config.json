@@ -1,0 +1,16 @@
+{
+  "store_name": "Valmont & Co.",
+  "site_url": "https://ivanjalda.github.io/Vamont-Academy",
+  "shopify_url": "https://www.valmontco.com",
+  "sync_from_shopify": true,
+  "company": "Community16 LLC",
+  "company_address": "500 4th St NW, Suite 102 #1327, Albuquerque, NM 87102, USA",
+  "contact_email": "community16jalda@gmail.com",
+  "amazon_author_url": "",
+  "links": {
+    "nexus": "https://nexusterminalalerts.com/",
+    "equity": "https://equityintrinsic.com/"
+  },
+  "products": {},
+  "_nota": "Cuando se cierre Shopify y valmontco.com apunte aquí, cambiar site_url a https://valmontco.com y poner el dominio en Settings > Pages."
+}
