@@ -16,8 +16,15 @@
       buy: "Comprar", get: "Descargar gratis", soon: "Muy pronto", amazon: "En papel en Amazon",
       edition: "Edición", only: "Ver solo", all: "Todas", esEd: "Español", enEd: "Inglés",
       instant: "Descarga inmediata · Pago seguro con Stripe", back: "← Volver",
-      nexusT: "Nexus Terminal Alerts", nexusD: "Escáner de mercado y alertas de trading diarias por correo y Telegram.",
-      equityT: "Equity Intrinsic", equityD: "Análisis de acciones por valor intrínseco para invertir a medio y largo plazo.",
+      nexusT: "Nexus Terminal", nexusTag: "Trading · Lectura técnica diaria",
+      nexusD: "Cada día escanea miles de acciones, criptomonedas y divisas, te explica qué dice cada gráfico y publica el historial de aciertos de sus señales.",
+      nexusL: ["Escáner con mapa de calor y analizador", "Pronóstico de apertura para el día siguiente", "Histórico público de señales", "Aviso diario gratis por correo y Telegram"],
+      nexusC: "Recibir los avisos gratis", nexusP: "Gratis",
+      equityT: "Equity Intrinsic", equityTag: "Inversión · Valor intrínseco",
+      equityD: "Calcula cuánto vale de verdad cada empresa de EE. UU. con datos oficiales: tres métodos de valoración, margen de seguridad y salud financiera.",
+      equityL: ["Valoración con tres métodos y margen de seguridad", "10 años de estados financieros y compras de directivos", "Premium: resumen diario por correo en tu idioma", "Premium: canal de Telegram con nuevas oportunidades"],
+      equityC: "Ver el plan Premium", equityP: "Gratis · Premium 5 €/mes",
+      promoT: "Pon en práctica lo aprendido", promoD: "Tus libros y cursos te dan el método. Nuestras plataformas te dan los datos de cada día.",
       join: "Unirme", none: "Pronto habrá productos aquí.",
       thanks: "¡Gracias por tu compra!", thanksD: "Tu enlace de descarga aparece en la página de pago y en el correo de Stripe. Si tienes cualquier problema, escríbenos.",
       legal: "Aviso legal", privacy: "Privacidad", terms: "Condiciones", refunds: "Devoluciones",
@@ -37,8 +44,15 @@
       buy: "Buy", get: "Free download", soon: "Coming soon", amazon: "Paperback on Amazon",
       edition: "Edition", only: "Show only", all: "All", esEd: "Spanish", enEd: "English",
       instant: "Instant download · Secure payment with Stripe", back: "← Back",
-      nexusT: "Nexus Terminal Alerts", nexusD: "Market scanner and daily trading alerts by email and Telegram.",
-      equityT: "Equity Intrinsic", equityD: "Intrinsic-value stock analysis for medium and long-term investing.",
+      nexusT: "Nexus Terminal", nexusTag: "Trading · Daily technical read",
+      nexusD: "Every day it scans thousands of stocks, cryptocurrencies and forex pairs, explains what each chart says and publishes the track record of its signals.",
+      nexusL: ["Scanner with heat map and analyzer", "Next-day opening forecast", "Public signal history", "Free daily alert by email and Telegram"],
+      nexusC: "Get the free alerts", nexusP: "Free",
+      equityT: "Equity Intrinsic", equityTag: "Investing · Intrinsic value",
+      equityD: "Find out what every US company is really worth using official data: three valuation methods, margin of safety and financial health.",
+      equityL: ["Three valuation methods and margin of safety", "10 years of financials and insider buying", "Premium: daily email summary in your language", "Premium: Telegram channel with new opportunities"],
+      equityC: "See the Premium plan", equityP: "Free · Premium €5/month",
+      promoT: "Put what you learn into practice", promoD: "Our books and courses give you the method. Our platforms give you the data every day.",
       join: "Join", none: "Products coming soon.",
       thanks: "Thank you for your purchase!", thanksD: "Your download link is shown on the payment page and in the Stripe email. If anything goes wrong, write to us.",
       legal: "Legal notice", privacy: "Privacy", terms: "Terms", refunds: "Refunds",
@@ -79,22 +93,41 @@
       return '<button class="' + (on ? "on" : "") + '" data-ed="' + x[0] + '">' + x[1] + '</button>';
     }).join("") + '</div>';
   }
-  function subs() {
+  var UTM = "utm_source=valmont&utm_medium=web&utm_campaign=";
+  function plat(key, full) {
     var l = CAT.links || {};
+    var nexus = key === "nexus";
+    var base = nexus ? (l.nexus || "https://nexusterminalalerts.com/") : (l.equity || "https://equityintrinsic.com/");
+    var href = base + (base.indexOf("?") < 0 ? "?" : "&") + UTM + (full ? "suscripciones" : "promo") + (nexus ? "" : "#planes");
+    var logo = nexus ? "https://nexusterminalalerts.com/logo.png" : "https://equityintrinsic.com/logo-completo.png";
+    var feats = full ? '<ul class="feat">' + (T[L][key + "L"] || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "";
+    return '<a class="sub plat ' + key + '" target="_blank" rel="noopener" href="' + esc(href) + '">' +
+      '<div class="plat-h"><img class="plat-logo" src="' + logo + '" alt="' + esc(t(key + "T")) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+      '<div><span class="tag">' + esc(t(key + "Tag")) + '</span><h3>' + esc(t(key + "T")) + '</h3></div></div>' +
+      '<p>' + esc(t(key + "D")) + '</p>' + feats +
+      '<div class="plat-f"><span class="pp">' + esc(t(key + "P")) + '</span><span class="btn">' + esc(t(key + "C")) + ' →</span></div></a>';
+  }
+  function subs() {
     return '<section class="sec"><div class="sec-h"><h2>' + t("subs") + '</h2><p>' + t("subsSub") + '</p></div><div class="subs">' +
-      '<a class="sub" target="_blank" rel="noopener" href="' + esc(l.nexus || "https://nexusterminalalerts.com/") + '"><h3>' + t("nexusT") + '</h3><p>' + t("nexusD") + '</p><span class="btn">' + t("join") + ' →</span></a>' +
-      '<a class="sub" target="_blank" rel="noopener" href="' + esc(l.equity || "https://equityintrinsic.com/") + '"><h3>' + t("equityT") + '</h3><p>' + t("equityD") + '</p><span class="btn">' + t("join") + ' →</span></a>' +
-      '</div></section>';
+      plat("nexus", true) + plat("equity", true) + '</div></section>';
+  }
+  function promo() {
+    return '<section class="promo"><div class="promo-t"><span class="tag">Valmont &amp; Co. · Partners</span><h2>' + t("promoT") + '</h2><p>' + t("promoD") + '</p></div>' +
+      '<div class="subs">' + plat("nexus", false) + plat("equity", false) + '</div></section>';
   }
   function home() {
     return '<section class="hero"><h1>' + t("hero") + '</h1><p>' + t("heroSub") + '</p><div><a class="btn" href="#/s/free">' + t("cta") + '</a> <a class="btn ghost" href="#/s/book">' + t("ctaB") + '</a></div></section>' +
-      edBar() + section("free", 4) + section("book", 8) + section("guide", 8) + section("course", 6) + subs();
+      edBar() + section("free", 4) + section("book", 8) + promo() + section("guide", 8) + section("course", 6) + subs();
   }
   function product(id) {
     var p = CAT.products.filter(function (x) { return x.id === id; })[0];
     if (!p) return home();
     var gal = (p.images || []).map(function (s) { return '<img src="' + esc(s) + '" alt="' + esc(p.title) + '">'; }).join("");
     var act;
+    if (p.kind === "subscription") {  /* las suscripciones van a su plataforma: Nexus (trading) o Equity (inversión) */
+      var k = /nexus|trading|alert|señal|signal|cripto|crypto|forex/i.test(p.title + " " + (p.body || "")) ? "nexus" : "equity";
+      return '<a class="back" href="#/s/subs">' + t("back") + '</a><section class="sec"><div class="sec-h"><h2>' + esc(p.title) + '</h2><p>' + t("subsSub") + '</p></div><div class="subs">' + plat(k, true) + '</div></section>';
+    }
     if (p.kind === "free" && p.free_url) act = '<a class="btn" target="_blank" rel="noopener" href="' + esc(p.free_url) + '">' + t("get") + '</a>';
     else if (p.pay_url) act = '<a class="btn" href="' + esc(p.pay_url) + '">' + t("buy") + ' · ' + money(p.price_usd) + '</a><p class="muted small">' + t("instant") + '</p>';
     else act = '<span class="btn off">' + t("soon") + '</span>';
@@ -102,7 +135,7 @@
     return '<a class="back" href="#/">' + t("back") + '</a><article class="prod"><div class="gal">' + (gal || '<div class="ph big">V</div>') + '</div><div class="info">' +
       '<span class="flag">' + (p.kind === "course" ? "ES" : (p.lang || "es").toUpperCase()) + '</span><h1>' + esc(p.title) + '</h1>' +
       '<div class="price big">' + (p.price_usd > 0 ? money(p.price_usd) : t("get")) + '</div>' + act +
-      '<div class="body">' + (p.body || "") + '</div><p class="muted small">' + t("disc") + '</p></div></article>';
+      '<div class="body">' + (p.body || "") + '</div><p class="muted small">' + t("disc") + '</p></div></article>' + promo();
   }
   function legal(k) {
     var c = 'Valmont &amp; Co. — Community16 LLC · 500 4th St NW, Suite 102 #1327, Albuquerque, NM 87102, USA · community16jalda@gmail.com';
@@ -122,7 +155,7 @@
     var h = location.hash || "#/", m;
     var html;
     if ((m = h.match(/^#\/p\/(.+)$/))) html = product(decodeURIComponent(m[1]));
-    else if ((m = h.match(/^#\/s\/(\w+)$/))) html = m[1] === "subs" ? subs() : edBar() + section(m[1]);
+    else if ((m = h.match(/^#\/s\/(\w+)$/))) html = m[1] === "subs" ? subs() : edBar() + section(m[1]) + (m[1] === "free" ? "" : promo());
     else if ((m = h.match(/^#\/l\/(\w+)$/))) html = legal(m[1]);
     else if (h === "#/gracias") html = '<section class="hero"><h1>' + t("thanks") + '</h1><p>' + t("thanksD") + '</p></section>';
     else html = home();

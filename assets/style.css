@@ -26,3 +26,21 @@ main{max-width:1180px;margin:0 auto;padding:20px}
 footer{border-top:1px solid var(--line);color:var(--mut);text-align:center;padding:28px 20px;font-size:13px;margin-top:60px}footer a{color:var(--mut)}
 .loading{text-align:center;color:var(--mut);padding:80px}
 @media(max-width:760px){.prod{grid-template-columns:1fr}#nav{order:3;width:100%;gap:12px}}
+
+/* Plataformas asociadas: Nexus Terminal y Equity Intrinsic */
+.plat{display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;background:linear-gradient(160deg,#131f38,#0d1528 70%);transition:.25s}
+.plat:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.plat::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)}
+.plat.nexus::before{background:linear-gradient(90deg,#2fd27a,var(--gold))}
+.plat-h{display:flex;align-items:center;gap:14px}
+.plat-logo{width:56px;height:56px;object-fit:contain;background:#0a0f1c;border:1px solid var(--line);padding:6px;border-radius:10px}
+.plat h3{margin:2px 0 0}
+.tag{display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.feat{margin:0;padding:0;list-style:none;color:#cfd6e4;font-size:14px}
+.feat li{padding:5px 0 5px 22px;position:relative;border-top:1px solid #1a2540}
+.feat li::before{content:"✓";position:absolute;left:0;color:var(--gold)}
+.plat-f{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;flex-wrap:wrap}
+.pp{color:var(--gold2);font:600 15px var(--serif)}
+.promo{margin:56px 0;padding:34px 22px;border:1px solid var(--line);background:radial-gradient(circle at 15% 0,#1a2a4c,transparent 60%),var(--card)}
+.promo-t{text-align:center;max-width:640px;margin:0 auto 22px}.promo-t h2{font:600 clamp(24px,3.5vw,32px) var(--serif);margin:6px 0}.promo-t p{color:var(--mut);margin:0}
+@media(max-width:600px){.plat-f .btn{width:100%;text-align:center}}
