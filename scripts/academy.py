@@ -251,6 +251,35 @@ def page_html(p):
 </head><body><h1>{title}</h1><p>{desc}</p><a href="{SITE}/#/p/{p['id']}">Valmont &amp; Co.</a></body></html>"""
 
 
+def write_feed(visible):
+    """feeds/catalogo.xml: catálogo para Pinterest, Bing y Meta (libros, guías y cursos de pago)."""
+    esc = lambda x: html.escape(str(x or ""), quote=True)
+    items = []
+    for p in visible:
+        if p["kind"] not in ("book", "guide", "course") or p.get("price_usd", 0) <= 0 or not p.get("images"):
+            continue
+        desc = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", p.get("body", ""))).strip()[:4900] or p["title"]
+        kind = (KIND_ES if p["lang"] == "es" else KIND_EN)[p["kind"]]
+        items.append("<item>" + "".join([
+            f"<g:id>{esc(p['id'])}</g:id>", f"<title>{esc(p['title'])}</title>",
+            f"<description>{esc(desc)}</description>", f"<link>{SITE}/p/{esc(p['id'])}/</link>",
+            f"<g:image_link>{SITE}/{esc(p['images'][0])}</g:image_link>",
+            "".join(f"<g:additional_image_link>{SITE}/{esc(i)}</g:additional_image_link>" for i in p["images"][1:5]),
+            "<g:availability>in stock</g:availability><g:condition>new</g:condition>",
+            f"<g:price>{p['price_usd']:.2f} USD</g:price>",
+            f"<g:brand>Valmont &amp; Co.</g:brand><g:identifier_exists>no</g:identifier_exists>",
+            f"<g:product_type>{esc(kind)}</g:product_type>",
+            "<g:google_product_category>784</g:google_product_category>",
+            f"<g:content_language>{esc(p['lang'])}</g:content_language>"]) + "</item>")
+    os.makedirs(os.path.join(ROOT, "feeds"), exist_ok=True)
+    with open(os.path.join(ROOT, "feeds", "catalogo.xml"), "w", encoding="utf-8") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">'
+                f"<channel><title>Valmont &amp; Co.</title><link>{SITE}</link>"
+                "<description>Libros, guías y cursos de inversión · Valmont &amp; Co.</description>"
+                + "".join(items) + "</channel></rss>\n")
+    print(f"[academia] Catálogo para Pinterest/Bing: {len(items)} productos ({SITE}/feeds/catalogo.xml)")
+
+
 def build_site(db):
     visible = [p for p in db.values() if not p.get("hidden")]
     order = {"free": 0, "book": 1, "guide": 2, "course": 3, "subscription": 4}
@@ -268,6 +297,7 @@ def build_site(db):
         with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
             f.write(page_html(p))
         urls.append(f"{SITE}/p/{p['id']}/")
+    write_feed(visible)
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
         for u in urls:
