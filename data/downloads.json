@@ -1,0 +1,3 @@
+{
+  "_nota": "Enlace de descarga de cada producto: \"id-del-producto\": \"https://drive.google.com/...\" (Google Drive, compartir: cualquiera con el enlace). Cuando un producto tiene enlace, el sistema crea solo su botón de pago en Stripe con el precio de Shopify y lo pone a la venta. Los ids están en data/catalog.json."
+}
