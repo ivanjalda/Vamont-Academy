@@ -2,7 +2,7 @@ name: Academia (copia de Shopify, cobros, ventas y web)
 
 on:
   schedule:
-    - cron: "23 */3 * * *"   # cada 3 horas
+    - cron: "23 * * * *"   # cada hora (publica en redes solo 2 veces al día)
   workflow_dispatch:
   push:
     paths:
@@ -25,6 +25,7 @@ jobs:
       VALMONT_DOWNLOADS: ${{ secrets.VALMONT_DOWNLOADS }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,6 +33,13 @@ jobs:
           python-version: "3.12"
       - name: Motor de la academia
         run: python scripts/academy.py
+      - name: Herramientas para fotos y vídeos (Pillow y FFmpeg)
+        run: |
+          pip install --quiet pillow
+          which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+      - name: Redes sociales (2 publicaciones al día con el logo de Valmont)
+        continue-on-error: true
+        run: python scripts/meta_publisher.py
       - name: Guardar cambios
         run: |
           git config user.name "valmont-bot"
