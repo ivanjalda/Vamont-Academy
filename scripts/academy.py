@@ -144,11 +144,19 @@ def sync_shopify(db):
 
 # ------------------------------------------------------------------ 2. Enlaces de pago de Stripe
 def downloads():
+    """Enlaces de descarga por producto: el secreto VALMONT_DOWNLOADS y/o el archivo data/downloads.json
+    (id del producto → enlace de Google Drive «cualquiera con el enlace»). Si un producto aparece en los dos, manda el secreto."""
+    out = {}
     try:
-        return json.loads(env("VALMONT_DOWNLOADS") or "{}")
+        f = load_json("downloads.json", {})
+        out.update({k: v for k, v in f.items() if not k.startswith("_") and isinstance(v, str) and v.startswith("http")})
+    except Exception:
+        log("data/downloads.json no es un JSON válido.")
+    try:
+        out.update(json.loads(env("VALMONT_DOWNLOADS") or "{}"))
     except Exception:
         log("El secreto VALMONT_DOWNLOADS no es un JSON válido.")
-        return {}
+    return out
 
 
 def make_links(db):
