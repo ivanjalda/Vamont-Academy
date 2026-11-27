@@ -12,37 +12,45 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/style.css">
 <style>
-  body { display: flex; flex-direction: column; min-height: 100vh; margin: 0; font-family: system-ui, -apple-system, sans-serif; }
-  main { flex: 1; padding: 1rem; max-width: 800px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-  .btn-compra { display: block; width: 100%; background: #635bff; color: #fff; text-align: center; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; text-decoration: none; margin: 1rem 0; box-shadow: 0 4px 6px rgba(50,50,93,.11); }
-  .btn-whatsapp { display: block; width: 100%; background: #25d366; color: #fff; text-align: center; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; text-decoration: none; margin: 1rem 0; box-shadow: 0 4px 6px rgba(50,50,93,.11); }
-  footer { background: #f8f9fa; padding: 1.5rem 1rem; text-align: center; font-size: 0.85rem; color: #555; border-top: 1px solid #e5e5e5; }
-  footer a { color: #555; text-decoration: underline; margin: 0 0.5rem; }
+/* Pantalla completa: la web ocupa todo el ancho para que no parezca vacía */
+body { display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+main { flex: 1; width: 100%; max-width: none; margin: 0; padding: 20px clamp(16px, 3vw, 56px); box-sizing: border-box; }
+.hero { padding: clamp(50px, 7vw, 110px) 10px clamp(40px, 5vw, 70px); }
+.hero h1 { font-size: clamp(32px, 4.2vw, 68px); }
+.hero p { max-width: 900px; font-size: clamp(16px, 1.15vw, 20px); }
+.grid { grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 15vw, 280px), 1fr)); gap: clamp(16px, 1.4vw, 26px); }
+.subs { grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 28vw, 520px), 1fr)); }
+.promo-t { max-width: 900px; }
+.legal { max-width: 1100px; margin: 0 auto; }
+.btn-compra { display: block; width: 100%; background: #635bff; color: #fff; text-align: center; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; text-decoration: none; margin: 1rem 0; box-shadow: 0 4px 6px rgba(50,50,93,.11); }
+.btn-whatsapp { display: block; width: 100%; background: #25d366; color: #fff; text-align: center; padding: 1rem; font-size: 1.1rem; font-weight: bold; border-radius: 8px; text-decoration: none; margin: 1rem 0; box-shadow: 0 4px 6px rgba(50,50,93,.11); }
+footer { border-top: 1px solid var(--line); color: var(--mut); text-align: center; padding: 28px 20px; font-size: 13px; }
+footer a { color: var(--mut); text-decoration: underline; margin: 0 0.5rem; }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"EducationalOrganization","@id":"https://ivanjalda.github.io/Vamont-Academy/#org","name":"Valmont & Co.","url":"https://ivanjalda.github.io/Vamont-Academy/","logo":"https://ivanjalda.github.io/Vamont-Academy/assets/logo-512.jpg","email":"community16jalda@gmail.com","telephone":"+1-505-437-5675","address":{"@type":"PostalAddress","streetAddress":"500 4th St NW, Suite 102 #1327","addressLocality":"Albuquerque","addressRegion":"NM","postalCode":"87102","addressCountry":"US"},"sameAs":["https://www.instagram.com/ivanjvalmont","https://www.tiktok.com/@elmetodovalmont"],"parentOrganization":{"@type":"Organization","name":"Community16 LLC"}},{"@type":"WebSite","@id":"https://ivanjalda.github.io/Vamont-Academy/#site","name":"Valmont & Co.","url":"https://ivanjalda.github.io/Vamont-Academy/","publisher":{"@id":"https://ivanjalda.github.io/Vamont-Academy/#org"}}]}</script>
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="#/"><span class="mark">V</span><span>Valmont <em>&amp;</em> Co.</span></a>
-  <nav id="nav"></nav>
-  <div class="lang"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+<a class="brand" href="#/"><span class="mark">V</span><span>Valmont <em>&amp;</em> Co.</span></a>
+<nav id="nav"></nav>
+<div class="lang"><button data-l="es">ES</button><button data-l="en">EN</button></div>
 </header>
 <main id="app">
-  <p class="loading">…</p>
-  <div style="margin-top: 2rem;">
-    <h2>Accede a nuestros cursos y formación</h2>
-    <p>Compra de forma totalmente segura con Stripe y empieza hoy mismo desde tu móvil.</p>
-    <a href="https://buy.stripe.com/" class="btn-compra" target="_blank" rel="noopener">Comprar ahora con Stripe</a>
-    <a href="https://wa.me/15054375675?text=Hola,%20necesito%20resolver%20dudas%20sobre%20los%20cursos%20de%20Valmont" class="btn-whatsapp" target="_blank" rel="noopener">Resolver dudas por WhatsApp</a>
-  </div>
+<p class="loading">…</p>
+<div style="margin-top: 2rem;">
+<h2>Accede a nuestros cursos y formación</h2>
+<p>Compra de forma totalmente segura con Stripe y empieza hoy mismo desde tu móvil.</p>
+<a href="https://buy.stripe.com/" class="btn-compra" target="_blank" rel="noopener">Comprar ahora con Stripe</a>
+<a href="https://wa.me/15054375675?text=Hola,%20necesito%20resolver%20dudas%20sobre%20los%20cursos%20de%20Valmont" class="btn-whatsapp" target="_blank" rel="noopener">Resolver dudas por WhatsApp</a>
+</div>
 </main>
 <footer id="foot">
-  <p>Community16 LLC &mdash; 500 4th St NW, Suite 102 #1327, Albuquerque, NM 87102, USA</p>
-  <p>Contacto: <a href="mailto:community16jalda@gmail.com">community16jalda@gmail.com</a> | Tel: +1 505 437 5675</p>
-  <p>
-    <a href="#aviso-legal">Aviso Legal</a> | 
-    <a href="#privacidad">Política de Privacidad</a>
-  </p>
+<p>Community16 LLC &mdash; 500 4th St NW, Suite 102 #1327, Albuquerque, NM 87102, USA</p>
+<p>Contacto: <a href="mailto:community16jalda@gmail.com">community16jalda@gmail.com</a> | Tel: +1 505 437 5675</p>
+<p>
+<a href="#aviso-legal">Aviso Legal</a> |
+<a href="#privacidad">Política de Privacidad</a>
+</p>
 </footer>
 <script src="assets/app.js"></script>
 </body>
