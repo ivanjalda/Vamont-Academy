@@ -19,6 +19,12 @@ main { flex: 1; width: 100%; max-width: none; margin: 0; padding: 20px clamp(16p
 .hero h1 { font-size: clamp(32px, 4.2vw, 68px); }
 .hero p { max-width: 900px; font-size: clamp(16px, 1.15vw, 20px); }
 .grid { grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 15vw, 280px), 1fr)); gap: clamp(16px, 1.4vw, 26px); }
+/* Secciones con pocos productos: tarjetas horizontales grandes que llenan el ancho */
+.grid:not(:has(> :nth-child(5))) { grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); }
+.grid:not(:has(> :nth-child(5))) > .card { display: grid; grid-template-columns: minmax(150px, 34%) 1fr; column-gap: clamp(16px, 2vw, 32px); align-content: center; padding: clamp(14px, 1.4vw, 24px); }
+.grid:not(:has(> :nth-child(5))) > .card > img, .grid:not(:has(> :nth-child(5))) > .card > .ph { grid-row: 1 / span 6; }
+.grid:not(:has(> :nth-child(5))) > .card h3 { font-size: clamp(17px, 1.3vw, 24px); }
+.grid:not(:has(> :nth-child(5))) > .card .price { font-size: clamp(16px, 1.1vw, 20px); }
 .subs { grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 28vw, 520px), 1fr)); }
 .promo-t { max-width: 900px; }
 .legal { max-width: 1100px; margin: 0 auto; }
