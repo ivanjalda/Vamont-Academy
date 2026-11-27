@@ -16,14 +16,14 @@
       buy: "Comprar", get: "Descargar gratis", soon: "Muy pronto", amazon: "En papel en Amazon",
       edition: "Edición", only: "Ver solo", all: "Todas", esEd: "Español", enEd: "Inglés",
       instant: "Descarga inmediata · Pago seguro con Stripe", back: "← Volver",
-      nexusT: "Nexus Terminal", nexusTag: "Trading · Lectura técnica diaria",
-      nexusD: "Cada día escanea miles de acciones, criptomonedas y divisas, te explica qué dice cada gráfico y publica el historial de aciertos de sus señales.",
-      nexusL: ["Escáner con mapa de calor y analizador", "Pronóstico de apertura para el día siguiente", "Histórico público de señales", "Aviso diario gratis por correo y Telegram"],
-      nexusC: "Recibir los avisos gratis", nexusP: "Gratis",
-      equityT: "Equity Intrinsic", equityTag: "Inversión · Valor intrínseco",
-      equityD: "Calcula cuánto vale de verdad cada empresa de EE. UU. con datos oficiales: tres métodos de valoración, margen de seguridad y salud financiera.",
-      equityL: ["Valoración con tres métodos y margen de seguridad", "10 años de estados financieros y compras de directivos", "Premium: resumen diario por correo en tu idioma", "Premium: canal de Telegram con nuevas oportunidades"],
-      equityC: "Ver el plan Premium", equityP: "Gratis · Premium 5 €/mes",
+      nexusT: "Nexus Terminal Pro", nexusTag: "Trading · Señales y pronósticos del mercado",
+      nexusD: "Predice el mercado y te envía señales de trading: dónde entrar y dónde no, con pronósticos diarios calculados sobre miles de acciones, criptomonedas y divisas, y un historial público de aciertos.",
+      nexusL: ["Señales de trading y pronósticos de cada sesión", "Avisos diarios por correo y Telegram", "Zonas Pro de la web: escáner completo y herramientas", "Histórico público de aciertos para comprobarlo todo"],
+      nexusC: "Suscribirme a Nexus Pro", nexusP: "Plan Pro · 5 €/mes", nexusF: "También tiene versión gratis",
+      equityT: "Equity Intrinsic Premium", equityTag: "Inversión · Predicción de acciones y valor intrínseco",
+      equityD: "Predice qué acciones tienen recorrido y calcula cuánto vale de verdad cada empresa con datos oficiales: tres métodos de valoración, margen de seguridad y salud financiera.",
+      equityL: ["Acciones por debajo de su valor real, cada día", "Resumen diario por correo en tu idioma", "Canal de Telegram con nuevas oportunidades", "Valoración con tres métodos y 10 años de cuentas"],
+      equityC: "Ver planes de Equity Intrinsic", equityP: "Plan Premium · 5 €/mes", equityF: "También tiene versión gratis",
       promoT: "Pon en práctica lo aprendido", promoD: "Tus libros y cursos te dan el método. Nuestras plataformas te dan los datos de cada día.",
       join: "Unirme", none: "Pronto habrá productos aquí.",
       thanks: "¡Gracias por tu compra!", thanksD: "Tu enlace de descarga aparece en la página de pago y en el correo de Stripe. Si tienes cualquier problema, escríbenos.",
@@ -44,14 +44,14 @@
       buy: "Buy", get: "Free download", soon: "Coming soon", amazon: "Paperback on Amazon",
       edition: "Edition", only: "Show only", all: "All", esEd: "Spanish", enEd: "English",
       instant: "Instant download · Secure payment with Stripe", back: "← Back",
-      nexusT: "Nexus Terminal", nexusTag: "Trading · Daily technical read",
-      nexusD: "Every day it scans thousands of stocks, cryptocurrencies and forex pairs, explains what each chart says and publishes the track record of its signals.",
-      nexusL: ["Scanner with heat map and analyzer", "Next-day opening forecast", "Public signal history", "Free daily alert by email and Telegram"],
-      nexusC: "Get the free alerts", nexusP: "Free",
-      equityT: "Equity Intrinsic", equityTag: "Investing · Intrinsic value",
-      equityD: "Find out what every US company is really worth using official data: three valuation methods, margin of safety and financial health.",
-      equityL: ["Three valuation methods and margin of safety", "10 years of financials and insider buying", "Premium: daily email summary in your language", "Premium: Telegram channel with new opportunities"],
-      equityC: "See the Premium plan", equityP: "Free · Premium €5/month",
+      nexusT: "Nexus Terminal Pro", nexusTag: "Trading · Market signals and forecasts",
+      nexusD: "Predicts the market and sends you trading signals: where to enter and where not to, with daily forecasts across thousands of stocks, cryptocurrencies and forex pairs, plus a public track record.",
+      nexusL: ["Trading signals and forecasts for every session", "Daily alerts by email and Telegram", "Pro areas of the site: full scanner and tools", "Public track record so you can check everything"],
+      nexusC: "Subscribe to Nexus Pro", nexusP: "Pro plan · €5/month", nexusF: "Also has a free version",
+      equityT: "Equity Intrinsic Premium", equityTag: "Investing · Stock predictions and intrinsic value",
+      equityD: "Predicts which stocks have room to run and calculates what every company is really worth using official data: three valuation methods, margin of safety and financial health.",
+      equityL: ["Stocks below their real value, every day", "Daily email summary in your language", "Telegram channel with new opportunities", "Three valuation methods and 10 years of financials"],
+      equityC: "See Equity Intrinsic plans", equityP: "Premium plan · €5/month", equityF: "Also has a free version",
       promoT: "Put what you learn into practice", promoD: "Our books and courses give you the method. Our platforms give you the data every day.",
       join: "Join", none: "Products coming soon.",
       thanks: "Thank you for your purchase!", thanksD: "Your download link is shown on the payment page and in the Stripe email. If anything goes wrong, write to us.",
@@ -98,13 +98,14 @@
     var l = CAT.links || {};
     var nexus = key === "nexus";
     var base = nexus ? (l.nexus || "https://nexusterminalalerts.com/") : (l.equity || "https://equityintrinsic.com/");
-    var href = base + (base.indexOf("?") < 0 ? "?" : "&") + UTM + (full ? "suscripciones" : "promo") ;
+    var href = base + (base.indexOf("?") < 0 ? "?" : "&") + UTM + (full ? "suscripciones" : "promo") + (nexus ? "#pro" : "#planes");
     var logo = nexus ? "https://nexusterminalalerts.com/logo.png" : "https://equityintrinsic.com/logo-completo.png";
     var feats = full ? '<ul class="feat">' + (T[L][key + "L"] || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "";
     return '<a class="sub plat ' + key + '" target="_blank" rel="noopener" href="' + esc(href) + '">' +
       '<div class="plat-h"><img class="plat-logo" src="' + logo + '" alt="' + esc(t(key + "T")) + '" loading="lazy" onerror="this.style.display=\'none\'">' +
       '<div><span class="tag">' + esc(t(key + "Tag")) + '</span><h3>' + esc(t(key + "T")) + '</h3></div></div>' +
       '<p>' + esc(t(key + "D")) + '</p>' + feats +
+      '<p class="free-note">' + esc(t(key + "F")) + '</p>' +
       '<div class="plat-f"><span class="pp">' + esc(t(key + "P")) + '</span><span class="btn">' + esc(t(key + "C")) + ' →</span></div></a>';
   }
   function subs() {
