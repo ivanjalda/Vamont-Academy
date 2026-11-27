@@ -98,7 +98,7 @@
     var l = CAT.links || {};
     var nexus = key === "nexus";
     var base = nexus ? (l.nexus || "https://nexusterminalalerts.com/") : (l.equity || "https://equityintrinsic.com/");
-    var href = base + (base.indexOf("?") < 0 ? "?" : "&") + UTM + (full ? "suscripciones" : "promo") + (nexus ? "" : "#planes");
+    var href = base + (base.indexOf("?") < 0 ? "?" : "&") + UTM + (full ? "suscripciones" : "promo") ;
     var logo = nexus ? "https://nexusterminalalerts.com/logo.png" : "https://equityintrinsic.com/logo-completo.png";
     var feats = full ? '<ul class="feat">' + (T[L][key + "L"] || []).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "";
     return '<a class="sub plat ' + key + '" target="_blank" rel="noopener" href="' + esc(href) + '">' +
