@@ -1,3 +1,24 @@
 {
-  "_nota": "Enlace de descarga de cada producto: \"id-del-producto\": \"https://drive.google.com/...\" (Google Drive, compartir: cualquiera con el enlace). Cuando un producto tiene enlace, el sistema crea solo su botón de pago en Stripe con el precio de Shopify y lo pone a la venta. Los ids están en data/catalog.json."
+  "_nota": "Enlaces de entrega (Google Drive, cualquiera con el enlace, solo lectura). id del producto -> enlace.",
+  "the-valmont-vantage-elite-trading-protocol-free-intro-edition-english-version": "https://drive.google.com/drive/folders/1FPZp1EsCJcmJGvUNy1Rrk-saPM3BrBJQ",
+  "the-valmont-vantage-elite-trading-protocol-free-intro-edition-spanish-version": "https://drive.google.com/drive/folders/1EF1g254n7eHAAS3JwOsKlS_ob7coUX7A",
+  "the-gateway-to-valmont-global-market-entry-protocol-digital-edition-in-english-free-introduction": "https://drive.google.com/drive/folders/1HwH2-aZAyKTNCCCXKxsiVp0LIpBy8CKc",
+  "the-valmont-gateway-global-market-entry-protocol-digital-edition-in-spanish-free-introduction": "https://drive.google.com/drive/folders/1xO76qfcT2uM0uZh8ue2ImkW7pxBoE8Fv",
+  "protect-yourself-against-inflation-spanish-version": "https://drive.google.com/drive/folders/11HfNl2pkhCKvGV2oOgToAfmNCKBeaxRc",
+  "protect-yourself-from-inflation-english-version-digital-guide": "https://drive.google.com/drive/folders/1Q3xZI8PdsSsU8VnRuQthYLn00TzRz2_Z",
+  "learn-about-the-stock-market-english-version-digital-guide": "https://drive.google.com/drive/folders/1hkQ8BAEipZRhp--pgY8F4r-XzHGKA_Yn",
+  "get-to-know-the-stock-market-spanish-version": "https://drive.google.com/drive/folders/1QJXzsr3mEulROXTSCLDu8iys8RfHBcHo",
+  "complete-trading-guide-english-version-digital": "https://drive.google.com/drive/folders/1ahxaozzFLbpr_JkA904ldUb8UEw0hIcI",
+  "complete-trading-guide-spanish-version": "https://drive.google.com/drive/folders/1nYKiN9sN2OvwDo3YrCwQ92yegE9uTOsa",
+  "guide-to-real-estate-on-the-stock-market": "https://drive.google.com/drive/folders/1WYlXxWF8iLeQA-7zDlnjae4UUFOywnP8",
+  "real-estate-guide-to-the-stock-market-english-version-digital": "https://drive.google.com/drive/folders/1v_hAICuJr7XISrmUVddYSSf1vOaYI_9X",
+  "real-estate-courses-on-the-stock-market-in-spanish": "https://drive.google.com/drive/folders/1SgkGG8EYvYyIbnxWainMJVt8I4wEDthR",
+  "trading-course-in-spanish": "https://drive.google.com/drive/folders/16CC7NU_3G6NHWLbnNQIruzR7fGDFwuNp",
+  "learn-about-the-stock-market-course-in-spanish": "https://drive.google.com/drive/folders/1MZ4h5nyFetuxdgFWhOqHTSevq-SuLFHJ",
+  "the-abcs-of-the-digital-stock-market-english-version": "https://drive.google.com/drive/folders/1c3kxKCIyN3G984jQdchrgresZG8V1NIm",
+  "el-abc-de-la-bolsa": "https://drive.google.com/drive/folders/1TFg3_odLFfyZ6cvNDSQgzlqAxdYbWnYk",
+  "beyond-the-abcs-advanced-strategies-to-multiply-your-capital-english-version": "https://drive.google.com/drive/folders/1Yf3-tHuDZKHrghSHlm8hSBPt6pWsm-xZ",
+  "beyond-the-abcs-advanced-strategies-to-multiply-your-capital-spanish-version": "https://drive.google.com/drive/folders/1UB9AnoGQewhx65QoWtPx-sWzN4-DPdLj",
+  "the-new-yoke-when-power-abandoned-the-people-english-version-digital": "https://drive.google.com/drive/folders/1s2n_YAViklgv4KDepCv0JFW8V-s8lEf7",
+  "the-new-yoke-when-power-abandoned-the-people-spanish-version-digital": "https://drive.google.com/drive/folders/15E1O1J6SmTyzk_tLOGFodjwNQRtQe3qu"
 }

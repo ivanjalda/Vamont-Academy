@@ -1,7 +1,7 @@
 {
   "store_name": "Valmont & Co.",
-  "site_url": "https://ivanjalda.github.io/Vamont-Academy",
-  "shopify_url": "https://www.valmontco.com",
+  "site_url": "https://valmontco.com",
+  "shopify_url": "https://9c7d48-20.myshopify.com",
   "sync_from_shopify": true,
   "company": "Community16 LLC",
   "company_address": "500 4th St NW, Suite 102 #1327, Albuquerque, NM 87102, USA",
@@ -12,5 +12,5 @@
     "equity": "https://equityintrinsic.com/"
   },
   "products": {},
-  "_nota": "Cuando se cierre Shopify y valmontco.com apunte aquí, cambiar site_url a https://valmontco.com y poner el dominio en Settings > Pages."
+  "_nota": "valmontco.com apunta a GitHub Pages. La copia desde Shopify usa la dirección myshopify; cuando la tienda se cierre, la web sigue con lo ya copiado."
 }
